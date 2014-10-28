@@ -1,0 +1,133 @@
+/* Initial body */
+body {
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+div .game-field{
+  width: 100%;
+  height:  100%;
+  background-color: transparent;
+
+
+
+}
+
+/* Initial menu */
+.menu {
+  background: #202024 url('../images/black-thread.png') repeat left top;
+  left: -285px;  /* start off behind the scenes */
+  height: 100%;
+  position: fixed;
+  width: 285px;
+}
+
+/* Basic styling */
+
+body{
+  background-image: url('../images/background.jpg');
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.menu ul {
+  border-top: 1px solid #636366;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #636366;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 45px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+  padding-top: 3px;
+}
+
+.menu a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-close {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.icon-menu {
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+
+.icon-menu i {
+  margin-right: 5px;
+}
+
+.textInputWight{
+   color: #fff;
+   font-size: 15px;
+ }
+
+
+.col{
+  float: left;
+  overflow: hidden;
+}
+
+.col div{
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  margin: 2px;
+}
+
+.gamePlace{
+  background-color: #245269;
+  width: 100px;
+  height:40px;
+
+  border: #357ebd solid;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  margin: auto;
+}
+
+.gamePlaceRow {
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+}
+
+.gameRabbit{
+
+
+}
+.gameWolf{
+
+}
+.gameTree{
+
+}
+
+.gameBash{
+
+}
