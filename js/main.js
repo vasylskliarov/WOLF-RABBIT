@@ -250,7 +250,6 @@ function GameController(gridSize, gameSpeed, treesQuantity, treesLengthOfLife, b
                 randX = Math.floor( Math.random() * grid.length );
                 randY = Math.floor( Math.random() * grid[randX].length );
             }while(grid[randX][randY].personage.value != PersonageEnum.EMPTY.value);
-            //TODO finish it
             grid[randX][randY] = gameObject;
             console.log("" + gameObject.getPersonage().name + " X= " + randX + " Y= " + randY);
             return true;
@@ -531,50 +530,49 @@ function GameController(gridSize, gameSpeed, treesQuantity, treesLengthOfLife, b
 
 
 
-    this.play = function(){
-        this.firstTimeSetUpGameObjects();
-            this.wolfMotion();
-            this.allGettingOlder();
-            if(!this.isWolfAlive()){
-                WINNER.value = PersonageEnum.RABBIT.value;
-            }
-        this.drawHTMLVue();
-        this.drawWINER(WINNER);
-    }
+
 
 
 
     this.drawWINER = function(personage){
+        var result;
         if(personage.value === PersonageEnum.RABBIT.value){
             console.log("Заяц победил");
+            result = "Заяц победил";
+
         }else{
             console.log("Волк победил");
+            result = "Волк победил";
         }
+        $( "#game-result" ).append("<div>").text(result);
 
     }
+    this.cleanWINER = function(personage){
+        $( "#game-result" ).html('');
+
+    }
+
+    //game-field
 
 
     this.drawHTMLVue = function(){
         resString = "";
-
-
             for(var i = 0; i < grid.length; i++){
-                resString += "\n<div class='position:relative;'>\n";
+                resString += "\n<div class='gamePlaceRow'>\n";
                 for(var j = 0; j < grid[i].length; j++){
-                    resString += " <div class='gamePlace gamePlaceRow' \n> " + grid [i][j].personage.name + " </div>\n ";
-
+                    if(grid [i][j].personage.value === PersonageEnum.EMPTY.value){
+                        resString += " <div class='gamePlaceCell gameEmpty'>  </div>\n ";
+                    }else if(grid [i][j].personage.value === PersonageEnum.BASH.value){
+                        resString += " <div class='gamePlaceCell'> <img class='gameImg' src='images/bush.png' alt='куст'> </div>\n ";
+                    } else if(grid [i][j].personage.value === PersonageEnum.TREE.value){
+                        resString += " <div class='gamePlaceCell'> <img class='gameImg' src='images/tree.png' alt='дерево'> </div>\n ";
+                    }else if(grid [i][j].personage.value === PersonageEnum.RABBIT.value){
+                        resString += " <div class='gamePlaceCell'> <img class='gameImg' src='images/hare.png' alt='заяц'> </div>\n ";
+                    }else if(grid [i][j].personage.value === PersonageEnum.WOLF.value){
+                        resString += " <div class='gamePlaceCell'> <img class='gameImg' src='images/wolf.png' alt='волк'> </div>\n ";
+                    }
                 }
                 resString += "\n</div>\n";
-
-                //if(i===0){
-                //    gameField.append("<div>").attr('id', "row_" + i);
-                //}else{
-                //    gameField.append("<div>").attr('id', "row_" + i);
-                //}
-                //var currDiv = $( "#" + "row_" + i);
-
-                //$( "#game-field" ).append("<div>").attr('id', "cell_" + i + "_" + j).text(grid [i][j].personage.name);
-
             }
 
             $( "#game-field" ).append(resString);
@@ -584,21 +582,20 @@ function GameController(gridSize, gameSpeed, treesQuantity, treesLengthOfLife, b
 
 
 
+    this.play = function(){
+        this.firstTimeSetUpGameObjects();
+        this.wolfMotion();
+        this.allGettingOlder();
+        if(!this.isWolfAlive()){
+            WINNER.value = PersonageEnum.RABBIT.value;
+        }
+        this.drawHTMLVue();
+        this.drawWINER(WINNER);
 
+
+    }
 
 }
-
-
-/*--end-------------- GameController class -----------------*/
-
-
-
-
-/*---------------------------end----------------------------*/
-/*------------------- Class deffinitions -------------------*/
-/*----------------------------------------------------------*/
-
-
 
 
 
@@ -606,9 +603,13 @@ function GameController(gridSize, gameSpeed, treesQuantity, treesLengthOfLife, b
 /*----------------------- Test part ------------------------*/
 /*--------------------------start---------------------------*/
 
-var test = new GameController(10, 1000, 4, 4, 2, 6, 4, 10, 10);
 
-$(document).ready(test.play());
+
+$(document).ready(function(){
+    var test = new GameController(10, 1000, 4, 4, 2, 6, 4, 10, 10);
+    test.play();
+
+});
 /*---------------------------end----------------------------*/
 /*----------------------- Test part ------------------------*/
 /*----------------------------------------------------------*/

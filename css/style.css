@@ -99,35 +99,48 @@ body{
   margin: 2px;
 }
 
-.gamePlace{
+.gamePlaceCell{
+
   background-color: #245269;
-  width: 100px;
-  height:40px;
+  width: 50px;
+  height:50px;
 
   border: #357ebd solid;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
   margin: auto;
-}
-
-.gamePlaceRow {
   display: inline-block;
   color: #ffffff;
   text-align: center;
+
+  /*background-color: #245269;*/
+  /*width: 50px;*/
+  /*height:50px;*/
+
+  /*border: #357ebd solid;*/
+  /*text-align: center;*/
+  /*display: table-cell;*/
+  /*vertical-align: middle;*/
+  /*margin: auto;*/
 }
 
-.gameRabbit{
-
-
-}
-.gameWolf{
-
-}
-.gameTree{
+.gamePlaceRow {
+  position:relative;
 
 }
 
-.gameBash{
+.gameImg {
+  width: 50px;
+  height:50px;
+}
+.gameEmpty{
 
+}
+#game-result{
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
 }
